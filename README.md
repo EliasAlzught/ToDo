@@ -1,6 +1,6 @@
 # todo_task
 
-A new Flutter project.
+A new Flutter project for show tasks
 
 ## Getting Started
 
