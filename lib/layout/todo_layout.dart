@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_task/bloc/todo_cubit.dart';
+import 'package:todo_task/layout/search_page.dart';
 import 'package:todo_task/style/text_style.dart';
 
 import '../widget/todo_card.dart';
@@ -35,7 +36,18 @@ class _ToDoLayoutState extends State<ToDoLayout> {
             title: Text(
               "Todo",
               style: TextStyle(fontSize: mediaQuery.height * 0.025),
-            )),
+            ),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchPage(),
+                        ));
+                  },
+                  icon: Icon(Icons.search,color: Colors.grey,))
+            ]),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),

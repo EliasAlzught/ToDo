@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_task/style/text_style.dart';
 
 import '../model/todo_response.dart';
@@ -31,11 +32,17 @@ class ToDoDetails extends StatelessWidget {
         child: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            buildRowInfo("Completed",
-                todo.completed == true ? "not complete" : "not complete"),
             const SizedBox(
               height: 20,
             ),
+            Image.asset('assets/png/todo_image.png'),
+            const SizedBox(
+              height: 20,
+            ),
+            buildRowInfo("Completed", todo.completed ?? false),
+                const SizedBox(
+                  height: 15,
+                ),
             Text(
               "Title :",
               style: AppTestStyle.titleTextStyle,
@@ -53,12 +60,29 @@ class ToDoDetails extends StatelessWidget {
     );
   }
 
-  Widget buildRowInfo(String title, String content) {
+  Widget buildRowInfo(String title, bool complete) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title, style: AppTestStyle.titleTextStyle),
-        Text(content, style: AppTestStyle.contentTextStyle),
+        const Spacer(),
+        Text(complete == true ? "not complete" : "not complete",
+            style: AppTestStyle.contentTextStyle),
+        const SizedBox(
+          width: 15,
+        ),
+        complete == true
+            ? SvgPicture.asset(
+                "assets/svg/complete.svg",
+                color: Colors.green,
+                width: 20,
+                height: 20,
+              )
+            : SvgPicture.asset(
+                "assets/svg/un_complete.svg",
+                color: Colors.red,
+                width: 20,
+                height: 20,
+              )
       ],
     );
   }

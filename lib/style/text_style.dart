@@ -10,5 +10,6 @@ class AppTestStyle {
   static TextStyle titleSmallTextStyle =
       const TextStyle(fontSize: 14, letterSpacing: 0.5);
   static TextStyle contentTextStyle=const TextStyle(fontSize: 12, fontWeight: FontWeight.w600);
-
+  static TextStyle completeTextStyle=const TextStyle(fontSize: 10, fontWeight: FontWeight.w600,color: Colors.green);
+  static TextStyle unCompleteTextStyle=const TextStyle(fontSize: 10, fontWeight: FontWeight.w600,color: Colors.red);
 }

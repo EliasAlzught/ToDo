@@ -24,7 +24,9 @@ class ToDoCard extends StatelessWidget {
         child: Card(
           shadowColor: Colors.yellow.shade100,
           color: Colors.white,
-          elevation: 2,
+          elevation: 3,
+
+
           child: Container(
             color: Colors.white,
             child: Padding(
@@ -40,7 +42,9 @@ class ToDoCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Spacer(),
+                        Text( item.completed ==true ?"complete" : "not complete",
+                            style: item.completed ==true ? AppTestStyle.completeTextStyle:AppTestStyle.unCompleteTextStyle),
+                       const Spacer(),
                         Container(
                           color: Colors.yellow.shade100,
                           child: Padding(

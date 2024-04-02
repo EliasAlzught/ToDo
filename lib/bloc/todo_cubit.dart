@@ -21,4 +21,30 @@ class TodoCubit extends Cubit<TodoState> {
       emit(FetchToDoErrorState(ex.toString()));
     }
   }
+  void closeSearch()  {
+    emit(CloseSearchState());
+  }
+  Future<void> search(String text) async {
+    try {
+      if (result.isEmpty) {
+        emit(SearchEmptyState());
+      } else {
+        List<ToDoResponse> filteredList = [];
+        emit(SearchAwaitState());
+        for (var todo in result) {
+          if (todo.title != null &&
+              todo.title!.toLowerCase().contains(text.toLowerCase())) {
+            filteredList.add(todo);
+          }
+        }
+        if (filteredList.isEmpty) {
+          emit(SearchNotFoundState());
+        } else {
+          emit(SearchAcceptState(filteredList));
+        }
+      }
+    } catch (ex) {
+      emit(SearchErrorState(ex.toString()));
+    }
+  }
 }
